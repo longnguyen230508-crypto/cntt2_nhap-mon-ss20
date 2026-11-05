@@ -1,0 +1,19 @@
+Phần 1: Kiến trúc phối hợp 3 lớp bảo vệ chống hacker
+Lớp 1 (Xác thực tĩnh - Mật khẩu): Kiểm tra chuỗi ký tự đăng nhập của người dùng. Nếu hacker đánh cắp được mật khẩu, chúng chỉ vượt qua được lớp kiểm tra đầu tiên này.
+Lớp 2 (Xác thực sở hữu - Possession Factor): Yêu cầu thiết bị vật lý đáng tin cậy (điện thoại cá nhân) đã được thiết lập
+khóa bí mật từ trước. Hacker có mật khẩu nhưng không cầm thiết bị sẽ bị chặn hoàn toàn.
+Lớp 3 (Thuật toán động thời gian thực - TOTP): Thiết bị sinh mã OTP 6 chữ số dựa trên khóa bí mật và thời gian hiện tại qua công thức
+TOTP = HMAC(Key, Time). Mã này chỉ có hiệu lực trong 30 giây, ngăn chặn triệt để việc hacker đánh cắp hoặc tái sử dụng mã cũ.
+Sơ đồ luồng dữ liệu:
+[User/Hacker nhập mật khẩu] 
+-> [Lớp 1: Khớp]
+-> [Hệ thống yêu cầu mã TOTP] 
+-> [Thiết bị người dùng tính toán mã TOTP theo thời gian thực] -> [Hệ thống xác thực mã] 
+-> [Thành công nếu có mã hợp lệ / Từ chối nếu hacker thiếu mã OTP].
+
+Phần 2: Xử lý bẫy ngoại lệ khi trên máy bay (Không có internet/sóng)
+Cơ chế tự sinh mã offline của TOTP: Các ứng dụng Authenticator không cần internet hay sóng điện thoại để hoạt động.
+Chúng sử dụng đồng hồ nội bộ của thiết bị kết hợp với khóa bí mật đã lưu từ trước để tự tính toán mã OTP 6 chữ số theo thời gian thực, 
+hoàn toàn hoạt động tốt ngay cả khi thiết bị đang ở chế độ máy bay (Airplane Mode).
+Giải pháp dự phòng bổ sung: Sử dụng bộ Backup Codes (Mã dự phòng) một lần đã được hệ thống cấp sẵn và lưu trữ ngoại tuyến từ trước,
+hoặc dùng khóa bảo mật phần cứng qua kết nối cục bộ (Bluetooth/NFC/USB) nếu nền tảng hỗ trợ.
