@@ -1,0 +1,9 @@
+Phần 1: So sánh Chrome Password Manager và Bitwarden
+Khả năng chống Infostealer: Chrome lưu mật khẩu trong tệp Login Data dạng SQLite, dễ bị mã độc trích xuất trực tiếp; trong khi Bitwarden mã hóa đầu頭 (AES-256) tại máy, chống chịu tuyệt đối trước mã độc đánh cắp.
+Kiến trúc Zero-Knowledge: Chrome lưu và quản lý khóa giải mã trên đám mây của hãng; Bitwarden áp dụng Zero-Knowledge hoàn toàn, máy chủ không bao giờ biết Master Password của người dùng.
+Đồng bộ chéo nền tảng: Chrome tối ưu tốt trong hệ sinh thái Google nhưng hạn chế chéo trình duyệt; Bitwarden hỗ trợ mượt mà trên mọi thiết bị và trình duyệt.
+
+Phần 2: Lập luận vì sao Bitwarden thắng thế về mặt bảo mật
+Triệt tiêu nguy cơ trích xuất tệp dữ liệu cục bộ: Bitwarden yêu cầu Master Password để giải mã bộ nhớ tạm thời, ngăn chặn hoàn toàn việc mã độc đọc được thông tin đăng nhập dù xâm nhập được vào máy.
+Bảo vệ an toàn khi máy chủ bị tấn công: Nhờ kiến trúc Zero-Knowledge, kẻ gian không thể giải mã dữ liệu trên mây ngay cả khi hệ thống Bitwarden bị xâm nhập.
+Đánh đổi xứng đáng: Dù tốn thêm thao tác nhập mật khẩu chính, mức độ an toàn vượt trội giúp doanh nghiệp ngăn chặn nguy cơ rò rỉ tài khoản hàng loạt.
