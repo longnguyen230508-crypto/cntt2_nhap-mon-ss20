@@ -1,0 +1,11 @@
+1.Ví dụ file an toàn (.gitignore và .env.example):
+https://github.com/longnguyen230508-crypto/test
+
+2.Báo cáo đánh giá rủi ro nếu thiếu tệp .gitignore
+Mức độ rủi ro: Cực kỳ nghiêm trọng (Critical).
+
+Hậu quả chi tiết:
+Rò rỉ thông tin xác thực: Các file .env chứa thông tin kết nối Database, API Keys thanh toán, và Secret Tokens sẽ hiển thị công khai trên GitHub Public.
+Thiệt hại tài chính & Dịch vụ: Kẻ gian hoặc bot tự động quét mã nguồn có thể lợi dụng các khóa API để thực hiện giao dịch giả mạo hoặc chiếm đoạt quyền điều khiển máy chủ cơ sở dữ liệu.
+Ảnh hưởng uy tín đối tác: Việc lộ thông tin nhạy cảm trước khi giao code phản ánh sự thiếu sót trong quy trình quản trị bảo mật kỹ thuật.
+Biện pháp khắc phục khẩn cấp: Bổ sung ngay tệp .gitignore chặn file môi trường, quét lại lịch sử commit để xóa sạch dấu vết tệp nhạy cảm, và thu hồi, tạo mới toàn bộ các khóa API/mật khẩu liên quan.
